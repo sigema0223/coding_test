@@ -101,6 +101,37 @@ class LinkedList:
             prev = node
             node = node.next
         return False
+    
+    def insert(self, i, data):
+        if i <=0:
+            self.appendleft(data)
+        elif i>=self.length:
+            self.append(data)
+        else:
+            node = self.head
+            for j in range(i-1):
+                node = node.next
+            new_node = Node(data)
+            new_node.next = node.next
+            node.next = new_node
+            self.length += 1
+
+    def reverse(self):
+        node = self.head
+        prev = None
+        while node:
+            ahead = node.next
+            node.next = prev
+            prev = node
+            node = ahead
+
+        self.head = prev
+            
+        
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -160,9 +191,10 @@ if __name__ == "__main__":
     for i in [10, 20, 30, 40, 50]:
         lst.append(i)
 
+    """
     def display_list():
         print("List now:", lst, end=" ")
-
+    
     print("Initial list:", lst)
     print("Removing head (10):", lst.remove(10))
     display_list()
@@ -179,3 +211,13 @@ if __name__ == "__main__":
     print("Trying to remove from empty list (10):", lst.remove(10))
     display_list()
     print("=== Test Complete ===")
+    """
+
+    #checking insert(self, i, data)
+    """
+    lst.insert(2,25)
+    print(lst)
+    """
+
+    lst.reverse()
+    print(lst)
